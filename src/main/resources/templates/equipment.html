@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Equipment</title>
+</head>
+<body>
+<h1>Equipment</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Description</th>
+        <th>Purchase Date</th>
+        <th>Price</th>
+        <th>Serial Number</th>
+        <th>Location</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="equipment : ${equipmentList}">
+        <td th:text="${equipment.name}"></td>
+        <td th:text="${equipment.manufacturer}"></td>
+        <td th:text="${equipment.model}"></td>
+        <td th:text="${equipment.description}"></td>
+        <td th:text="${equipment.purchaseDate}"></td>
+        <td th:text="${equipment.price}"></td>
+        <td th:text="${equipment.serialNumber}"></td>
+        <td th:text="${equipment.location}"></td>
+        <td th:text="${equipment.status}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

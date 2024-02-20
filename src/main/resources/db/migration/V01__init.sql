@@ -1,0 +1,71 @@
+-- create table equipment
+-- (
+--     id            serial primary key,
+--     name          varchar(255) not null,
+--     manufacturer  varchar(255),
+--     model         varchar(255),
+--     description   text,
+--     purchase_date date,
+--     price         numeric(10, 2),
+--     serial_number varchar(255),
+--     location      varchar(255),
+--     status        varchar(255)
+-- );
+--
+-- create table comment
+-- (
+--     id           serial primary key,
+--     text         text,
+--     comment_date date,
+--     order_id integer references order (id),
+--     user_id integer references "user" (id)
+-- );
+--
+-- create index comment_order_id_idx on comment (order_id);
+--
+-- create table order
+-- (
+--     id         serial primary key,
+--     user_id    int,
+--     order_date date,
+--     status     varchar(255),
+--     foreign key (user_id) references "user" (id)
+--
+-- );
+--
+-- create table order_detail
+-- (
+--     id           serial primary key,
+--     order_id     int,
+--     equipment_id int,
+--     quantity     int,
+--     foreign key (order_id) references "order" (id),
+--     foreign key (equipment_id) references equipment (id)
+-- );
+--
+-- create table product_category
+-- (
+--     id          serial primary key,
+--     name        varchar(255) not null,
+--     description text
+-- );
+--
+-- create table request
+-- (
+--     id                serial primary key,
+--     created_at timestamp,
+--     status            varchar(255),
+--     equipment_id      int,
+--     foreign key (equipment_id) references equipment (id)
+-- );
+--
+-- create table user
+-- (
+--     id       serial primary key,
+--     name     varchar(255) not null,
+--     surname  varchar(255) not null,
+--     email    varchar(255) not null, unique,
+--     password varchar(255) not null, unique,
+--     login    varchar(255) not null, unique
+-- );
+
