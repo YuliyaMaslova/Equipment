@@ -1,6 +1,6 @@
 package com.example.equipment.controller;
 
-import com.example.equipment.dto.EquipmentDTO;
+import com.example.equipment.model.EquipmentDTO;
 import com.example.equipment.entity.Equipment;
 import com.example.equipment.service.EquipmentServiceImpl;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,16 +19,12 @@ import java.util.List;
 public class EquipmentController {
     private static final Logger logger = LoggerFactory.getLogger(EquipmentController.class);
     private final EquipmentServiceImpl equipmentService;
-    @GetMapping()
-    public ModelAndView getAllEquipment() {
+    @GetMapping
+    public ResponseEntity<List<Equipment>> getAllEquipment() {
         logger.info("Getting all equipment");
         List<Equipment> equipmentList = equipmentService.getAllEquipment();
-        ModelAndView modelAndView = new ModelAndView("equipment");
-        modelAndView.addObject("equipmentList", equipmentList);
-        return modelAndView;
+        return ResponseEntity.ok(equipmentList);
     }
-
-
 
     @PostMapping
     public ResponseEntity<String> createEquipment(@RequestBody EquipmentDTO equipmentDTO) {
@@ -56,5 +51,6 @@ public class EquipmentController {
 
 
 }
+//  jsonb posgresql примнение
 
 

@@ -1,6 +1,6 @@
 package com.example.equipment.component;
 
-import com.example.equipment.dto.EquipmentDTO;
+import com.example.equipment.model.EquipmentDTO;
 import com.example.equipment.entity.Equipment;
 import org.springframework.stereotype.Component;
 

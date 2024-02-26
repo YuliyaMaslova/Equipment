@@ -1,13 +1,14 @@
 package com.example.equipment.service;
 
 import com.example.equipment.component.EquipmentMapper;
-import com.example.equipment.dto.EquipmentDTO;
+import com.example.equipment.model.EquipmentDTO;
 import com.example.equipment.entity.Equipment;
+import com.example.equipment.entity.User;
 import com.example.equipment.repository.EquipmentRepository;
-import com.example.equipment.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EquipmentServiceImpl implements EquipmentService {
@@ -41,4 +42,9 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
 
+    public Equipment getEquipmentById(Long equipmentId) {
+        Optional<Equipment> optionalEquipment = equipmentRepository.findById(equipmentId);
+        return optionalEquipment.orElseGet(() -> null);
+
+    }
 }

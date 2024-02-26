@@ -11,4 +11,5 @@ public interface OrderService {
 
     List<Order> getOrdersByUser(int userId);
 
+    void saveOrder(Order newOrder);
 }

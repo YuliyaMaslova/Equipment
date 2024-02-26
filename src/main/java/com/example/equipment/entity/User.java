@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
@@ -20,9 +21,11 @@ public class User {
     private String password;
     private String login;
 
+    @ElementCollection(targetClass = UserRole.class)
+    @CollectionTable(name = "user_role_mapping", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    @ElementCollection
-    private List<UserRole> roles;
+    private Set<UserRole> roles;
 
     @OneToMany
     @JoinColumn(name = "order_id")

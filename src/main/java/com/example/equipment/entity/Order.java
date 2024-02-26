@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,8 +18,7 @@ public class Order {
     @ManyToOne
     private User user;
     private LocalDateTime orderDate;
-    @Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "smallint")
+    @Enumerated(EnumType.STRING)
     private RequestStatus status; // todo заменить на использование enum
 
     @ManyToMany
@@ -27,4 +26,20 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "equipment_id"))
     private List<Equipment> products;
 
+    public void addEquipment(Equipment equipmentById) {
+
+        if (products == null) {
+            products = new ArrayList<>();
+        }
+        products.add(equipmentById);
+
+    }
+
+    public void setComment(String comment) {
+
+    }
+
+    public void setEquipmentList(List<Equipment> equipmentList) {
+
+    }
 }

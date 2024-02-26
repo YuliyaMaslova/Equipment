@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<h1>Order Form</h1>
+<form th:action="@{/orders}" method="post">
+    <label for="equipment">Select Equipment:</label>
+    <select id="equipment" name="equipmentId">
+        <option th:each="equipment : ${equipmentList}" th:value="${equipment.id}" th:text="${equipment.name}"></option>
+    </select>
+    <br>
+    <label for="comment">Comment:</label>
+    <textarea id="comment" name="comment"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+<h1>Previous Orders</h1>
+<table>
+    <tr>
+        <th>Equipment</th>
+        <th>Comment</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="order : ${previousOrders}">
+        <td th:text="${order.equipment.name}"></td>
+        <td th:text="${order.comment}"></td>
+        <td th:text="${order.status}"></td>
+    </tr>
+</table>
+</body>
+</html>

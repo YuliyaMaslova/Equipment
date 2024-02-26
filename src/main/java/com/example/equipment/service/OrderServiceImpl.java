@@ -30,6 +30,19 @@ public class OrderServiceImpl implements OrderService {
         user.setId(userId);
         return orderRepository.findByUser(user);
     }
+
+    @Override
+    public void saveOrder(Order newOrder) {
+        orderRepository.save(newOrder);
+
+    }
+
+
+    public List<Order> getPreviousOrders() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        return orderRepository.findPreviousOrders(currentDate);
+
+    }
 }
 // created_date between 1 and 2 and author_id = 10
 //        Specification<Order> and = spec.and();
